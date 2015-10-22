@@ -9,3 +9,5 @@ Indy likes idols, and like to swap them without boulders smashing his head in.
 `function: (behold idol)` Get the value from an idol
 
 `function: (swap idol)` atomically swap the value of the idol
+
+Massive thanks to the folks behind the chanl library for common lisp. Their trivial-cas package is the basis for this
