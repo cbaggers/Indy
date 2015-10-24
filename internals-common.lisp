@@ -1,7 +1,7 @@
 (in-package :indy-internals)
 
 (defstruct (idol (:conc-name %idol-) (:constructor %make-idol))
-  (ref (error "idol cannot be created without a value") :type t)
+  (ref nil :type t)
   (id (gensym "I") :type symbol))
 
 (defmacro atomic-incf (place &optional (delta 1))
@@ -33,11 +33,6 @@
           (car `(ccl::%rplaca-conditional ,(cadr place) ,old ,new))
           (cdr `(ccl::%rplacd-conditional ,(cadr place) ,old ,new))
           (svref `(ccl::conditional-store ,place ,old ,new))))))
-
-(defmacro compare-and-swap-bool (place old-val new-val)
-  (let ((old (gensym "old")))
-    `(let ((,old ,old-val))
-       (if (eq ,old (compare-and-swap ,place ,old ,new-val)) t nil))))
 
 #+sbcl
 (defmacro swap! (place function &rest args)
