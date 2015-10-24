@@ -15,4 +15,4 @@
 
 (defpackage #:indy
   (:use #:cl)
-  (:export :idolize :swap :behold))
+  (:export :idolize :swap :swap-val :behold))

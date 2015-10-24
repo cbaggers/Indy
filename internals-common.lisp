@@ -41,8 +41,4 @@
 
 #+sbcl
 (defmacro swap! (place function &rest args)
-  "Atomically swaps the value of atom to be:
-   \(apply f current-value-of-atom args\). Note that f may be called
-   multiple times, and thus should be free of side effects.  Returns
-   the value that was swapped in."
   `(sb-ext:atomic-update ,place ,function ,@args))
